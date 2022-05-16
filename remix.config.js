@@ -4,8 +4,8 @@
 
 module.exports = {
   appDirectory: "app",
-  ignoredRouteFiles: [".*"],
   assetsBuildDirectory: "public/build",
   publicPath: "/build/",
   serverBuildPath: "build/index.js",
+  ignoredRouteFiles: [".*"],
 };
