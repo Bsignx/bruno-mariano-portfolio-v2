@@ -13,7 +13,7 @@ const Container = styled("div", {
 
 const GetPortfolioQuery = gql`
   {
-    mains {
+    main(where: { id: "cl37ygy33dor30dlxjekvuqlm" }) {
       id
       heroTitle
       heroSubtitle
