@@ -1,57 +1,46 @@
-# Example app with [Stitches](https://stitches.dev/)
+<h1 align="center">
+  brunomariano.me - v2
+</h1>
+<p align="center">
+  The second iteration of <a href="brunomariano.me" target="_blank">brunomariano.me</a> built with <a href="https://remix.run/" target="_blank">Remix JS</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
+</p>
+<p align="center">
+  Previous iterations:
+  <a href="https://github.com/Bsignx/my-personal-portfolio" target="_blank">v1</a>,
+</p>
 
-This example features how to use [Stitches](https://stitches.dev/) with Remix.
+![demo](https://res.cloudinary.com/my-portfoiio/image/upload/v1652730183/my-portfolio/Screenshot_6_kwjrbq.jpg)
 
-## How this implementation works
+## 🛠 Installation & Set Up
 
-### Stitches related files
+1. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
 
-```
-- app/
-  - styles/
-    - client.context.tsx
-    - server.context.tsx
-    - stitches.config.ts
-  - entry.client.tsx
-  - entry.server.tsx
-  - root.tsx
-```
+   ```sh
+   nvm install
+   ```
 
-1. `client.context.tsx` - Keeps the client context of styles and to reset styles sheets after every interaction into the state.
-2. `server.context.tsx` - Keeps the server context mounted on `entry.server.tsx`
-   with the Stitches sheets.
-3. `stitches.config.ts` - Keeps the Stitches configuration that is shared into
-   the project.
-4. `entry.client.tsx` - Every time that styles update and be re-injected it sets the
-   Stitches sheet to a React state.
-5. `entry.server.tsx` - Create the markup with the styles injected to serve on the server response.
+2. Install dependencies
 
-## Preview
+   ```sh
+   yarn
+   ```
 
-Open this example on [CodeSandbox](https://codesandbox.io/):
+3. Start the development server
 
-[![Open in CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/remix-run/remix/tree/main/examples/stitches)
+   ```sh
+   yarn dev
+   ```
 
-## Getting Started
+## 🚀 Building and Running for Production
 
-First, run the development server:
+1. Generate a full static production build
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+   ```sh
+   yarn run
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Preview the site as it will appear once deployed
 
-You can start editing the page by modifying `app/routes/index.tsx`. The page auto-updates as you edit the file.
-
-## Commands
-
-- `dev`: runs your application on `localhost:3000`
-- `build`: creates the production build version
-- `start`: starts a simple server with the build production code
-
-## Related Links
-
-[Stitches](https://stitches.dev/)
+   ```sh
+   yarn start
+   ```
