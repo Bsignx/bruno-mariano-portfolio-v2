@@ -1,3 +1,4 @@
+import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { gql } from "graphql-request";
@@ -11,21 +12,19 @@ const Container = styled("div", {
   lineHeight: 1.4,
 });
 
-const GetPortfolioQuery = gql`
-  {
-    main(where: { id: "cl37ygy33dor30dlxjekvuqlm" }) {
-      id
-      heroTitle
-      heroSubtitle
-      heroDescription
-      heroButtonName
-      heroImage
+export let loader: LoaderFunction = async ({ request }) => {
+  const portfolio = await graphcmsClient.request(gql`
+    {
+      main(where: { id: "cl37ygy33dor30dlxjekvuqlm" }) {
+        id
+        heroTitle
+        heroSubtitle
+        heroDescription
+        heroButtonName
+        heroImage
+      }
     }
-  }
-`;
-
-export let loader = async () => {
-  const portfolio = await graphcmsClient.request(GetPortfolioQuery);
+  `);
 
   return json({ portfolio });
 };
