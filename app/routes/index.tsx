@@ -7,11 +7,6 @@ import { ButtonToggleTheme } from "~/components";
 import { graphcmsClient } from "~/helpers";
 import { styled } from "../styles/stitches.config";
 
-const Container = styled("div", {
-  fontFamily: "system-ui, sans-serif",
-  lineHeight: 1.4,
-});
-
 export let loader: LoaderFunction = async ({ request }) => {
   const portfolio = await graphcmsClient.request(gql`
     {
@@ -33,8 +28,9 @@ export default function Index() {
   let data = useLoaderData();
 
   return (
-    <Container>
+    <>
       <ButtonToggleTheme />
-    </Container>
+      AAAAA
+    </>
   );
 }
