@@ -1,155 +1,28 @@
-import {
-  gray,
-  grayDark,
-  blackA,
-  indigo,
-  whiteA,
-  indigoA,
-  indigoDark,
-  indigoDarkA,
-  cyan,
-  cyanDark,
-  slate,
-  slateDark,
-  green,
-  greenDark,
-  red,
-  redDark,
-  yellow,
-  yellowDark,
-} from "@radix-ui/colors";
 import { createStitches } from "@stitches/react";
 import type * as Stitches from "@stitches/react";
 
 export type { VariantProps } from "@stitches/react";
 
 const colorsTokens = {
-  black: "$black12",
-  white: "$white12",
-
-  // Brand Solid
-  brand1: "$cyan1",
-  brand2: "$cyan2",
-  brand3: "$cyan3",
-  brand4: "$cyan4",
-  brand5: "$cyan5",
-  brand6: "$cyan6",
-  brand7: "$cyan7",
-  brand8: "$cyan8",
-  brand9: "$cyan9",
-  brand10: "$cyan10",
-  brand11: "$cyan11",
-  brand12: "$cyan12",
-
-  // Brand Alpha
-  brandA1: "$cyanA1",
-  brandA2: "$cyanA2",
-  brandA3: "$cyanA3",
-  brandA4: "$cyanA4",
-  brandA5: "$cyanA5",
-  brandA6: "$cyanA6",
-  brandA7: "$cyanA7",
-  brandA8: "$cyanA8",
-  brandA9: "$cyanA9",
-  brandA10: "$cyanA10",
-  brandA11: "$cyanA11",
-  brandA12: "$cyanA12",
-
-  // Background Solid
-  background1: "$slate12",
-  background2: "$slate11",
-  background3: "$slate10",
-  background4: "$slate9",
-  background5: "$slate8",
-  background6: "$slate7",
-  background7: "$slate6",
-  background8: "$slate5",
-  background9: "$slate4",
-  background10: "$slate3",
-  background11: "$slate2",
-  background12: "$slate1",
-
-  // Text Solid
-  text1: "$slate12",
-  text2: "$slate11",
-  text3: "$slate10",
-  text4: "$slate9",
-  text5: "$slate8",
-  text6: "$slate7",
-  text7: "$slate6",
-  text8: "$slate5",
-  text9: "$slate4",
-  text10: "$slate3",
-  text11: "$slate2",
-  text12: "$slate1",
-
-  // Gray Solid Renamed
-  gray1: "$slate1",
-  gray2: "$slate2",
-  gray3: "$slate3",
-  gray4: "$slate4",
-  gray5: "$slate5",
-  gray6: "$slate6",
-  gray7: "$slate7",
-  gray8: "$slate8",
-  gray9: "$slate9",
-  gray10: "$slate10",
-  gray11: "$slate11",
-  gray12: "$slate12",
-
-  // Semantic
-
-  brand: "#05a2c2",
-  heading: "$brand11",
-  text: "$brand12",
-  textHover: "$brand11",
-  textInvert: "$brand1",
-
-  buttonText: "$brand11",
-  buttonNormal: "$brand4",
-  buttonHover: "$brand5",
-  buttonFocus: "$brand6",
-
-  hiContrast: "$slate12",
-  loContrast: "$slate1",
-  canvas: "hsl(0 0% 15%)",
-  panel: "$slate3",
-  transparentPanel: "hsl(0 100% 100% / 97%)",
-  shadowLight: "hsl(206 22% 7% / 35%)",
-  shadowDark: "hsl(206 22% 7% / 20%)",
-
-  success1: "$green9",
-  success2: "$green10",
-  valid1: "$green9",
-  valid2: "$green10",
-  error1: "$red9",
-  error2: "$red10",
-  bug1: "$red9",
-  bug2: "$red10",
-  warning1: "$yellow9",
-  warning2: "$yellow10",
-  pending1: "$yellow9",
-  pending2: "$yellow10",
+  black: "#0F1413",
+  white: "#F0F3FB",
+  grayDark: "DBD3D3",
+  grayLight: "3E4644",
+  linear: "linear-gradient(121.04deg, #FC466B 2.39%, #3F5EFB 87.83%)",
 };
 
 const colorsTokensLightTheme = {
-  textAbsolute: "$slate12",
-  anchor: "$brand9",
-  anchorHover: "$brand10",
-  focusOutline: "$cyanA10",
-  background: "#F0F3FB",
-  backgroundInvert: "$brand11",
-  backgroundSection: "$brand4",
+  hiContrast: "$black",
+  loContrast: "$grayLight",
+  highlight: "$linear",
+  background: "$white",
 };
 
 const colorsTokensDarkTheme = {
-  textAbsolute: "$slate1",
-  anchor: "$brand10",
-  anchorHover: "$brand11",
-  focusOutline: "$cyanA10",
-  background: "#0F1413",
-  backgroundInvert: "$brand12",
-  backgroundSection: "$brand2",
+  hiContrast: "$white",
+  loContrast: "$grayDark",
+  highlight: "$linear",
+  background: "$black",
 };
 
 const spaceTokens = {
@@ -425,15 +298,6 @@ export const { createTheme, styled, globalCss, getCssText, config } =
   createStitches({
     theme: {
       colors: {
-        ...gray,
-        ...whiteA,
-        ...indigo,
-        ...indigoA,
-        ...yellow,
-        ...red,
-        ...cyan,
-        ...green,
-        ...slate,
         ...colorsTokens,
         ...colorsTokensLightTheme,
       },
@@ -479,15 +343,6 @@ export const lightTheme = createTheme("light");
 
 export const darkTheme = createTheme("dark", {
   colors: {
-    ...grayDark,
-    ...blackA,
-    ...indigoDark,
-    ...indigoDarkA,
-    ...cyanDark,
-    ...slateDark,
-    ...greenDark,
-    ...redDark,
-    ...yellowDark,
     ...colorsTokensDarkTheme,
   },
 });
@@ -498,48 +353,8 @@ globalCss({
     backgroundColor: "$background",
     padding: "0",
     margin: "0",
-    overflowX: "hidden",
     boxSizing: "border-box",
     fontFamily: "$fontDefault",
-    borderColor: "$brand",
-    borderStyle: "solid",
-    borderWidth: "0 5px 0 5px",
-    fontSize: "$0",
-    lineHeight: "$taller",
-    "@tablet": {
-      fontSize: "$1",
-    },
-    "@desktop": {
-      fontSize: "$2",
-    },
-  },
-  h1: { m: "$0", lineHeight: "$taller", fontSize: "2rem" },
-  h2: { m: "$0", lineHeight: "$taller", fontSize: "1.75rem" },
-  h3: { m: "$0", lineHeight: "$taller", fontSize: "1.5rem" },
-  h4: { m: "$0", lineHeight: "$taller", fontSize: "1.2rem" },
-  h5: { m: "$0", lineHeight: "$taller", fontSize: "1.1rem" },
-  h6: { m: "$0", lineHeight: "$taller", fontSize: "1rem" },
-  p: {
-    fontFamily: "$fontText",
-    color: "$text",
-  },
-  a: {
-    textDecoration: "none",
-    // color should be defined in Anchor/Link
-  },
-  hr: {
-    display: "block",
-    height: "1px",
-    border: "0",
-    backgroundColor: "$background10",
-    marginTop: "2rem",
-    marginBottom: "2rem",
-  },
-  button: { border: "$none" },
-  img: { userSelect: "none" },
-  svg: { display: "block" },
-  "pre, code": {
-    margin: 0,
-    fontFamily: "$fontMono",
+    fontSize: "$3",
   },
 })();
