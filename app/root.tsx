@@ -1,4 +1,9 @@
-import type { MetaFunction } from "@remix-run/node";
+import type {
+  HeadersFunction,
+  LoaderFunction,
+  MetaFunction,
+} from "@remix-run/node";
+import { json } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -7,15 +12,18 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
 } from "@remix-run/react";
 import { useContext, useEffect } from "react";
 
-import ClientStyleContext from "./styles/client.context";
-import { styled } from "./styles/stitches.config";
+import type { Theme } from "./helpers";
+import { getThemeSession } from "./helpers";
+import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "./helpers";
+import { getEnv } from "./utils";
+import { darkTheme, lightTheme, ClientStyleContext } from "./styles";
 
-const Container = styled("div", {
-  backgroundColor: "#ff0000",
-  padding: "1em",
+export const headers: HeadersFunction = () => ({
+  "Accept-CH": "Sec-CH-Prefers-Color-Scheme",
 });
 
 export const meta: MetaFunction = () => ({
@@ -24,12 +32,28 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+export type LoaderData = {
+  theme: Theme | null;
+  ENV: ReturnType<typeof getEnv>;
+};
+
 interface DocumentProps {
   children: React.ReactNode;
   title?: string;
 }
 
+export const loader: LoaderFunction = async ({ request }) => {
+  const themeSession = await getThemeSession(request);
+  const data: LoaderData = {
+    theme: themeSession.getTheme(),
+    ENV: getEnv(),
+  };
+
+  return json(data);
+};
+
 const Document = ({ children, title }: DocumentProps) => {
+  const data = useLoaderData<LoaderData>();
   const clientStyleData = useContext(ClientStyleContext);
 
   // Only executed on client
@@ -44,27 +68,94 @@ const Document = ({ children, title }: DocumentProps) => {
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: clientStyleData.sheet }}
           suppressHydrationWarning
         />
       </head>
-      <body>
+
+      <DocumentBody>
         {children}
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data.ENV)};`,
+          }}
+        />
+      </DocumentBody>
     </html>
   );
 };
 
-export default function App() {
+export function DocumentBody({ children }: { children: React.ReactNode }) {
+  const [theme] = useTheme();
+
+  return (
+    <body className={theme === "dark" ? darkTheme : lightTheme}>
+      {children}
+      <ScrollRestoration />
+      <Scripts />
+      <LiveReload />
+    </body>
+  );
+}
+
+export default function AppWithProviders() {
+  const data = useLoaderData<LoaderData>();
+
+  return (
+    <ThemeProvider specifiedTheme={data.theme}>
+      <App />
+    </ThemeProvider>
+  );
+}
+
+export function App() {
   return (
     <Document>
       <Outlet />
     </Document>
+  );
+}
+
+export function DocumentBoundary({
+  title,
+  children,
+}: {
+  title?: string;
+  children: React.ReactNode;
+}) {
+  const clientStyleData = useContext(ClientStyleContext);
+
+  // Only executed on client
+  useEffect(() => {
+    // reset cache to re-apply global styles
+    clientStyleData.reset();
+  }, [clientStyleData]);
+
+  return (
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        {title ? <title>{title}</title> : null}
+        <Meta />
+        <style
+          id="stitches"
+          dangerouslySetInnerHTML={{ __html: clientStyleData.sheet }}
+          suppressHydrationWarning
+        />
+        <Links />
+      </head>
+
+      <body className={darkTheme}>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+        {process.env.NODE_ENV === "development" && <LiveReload />}
+      </body>
+    </html>
   );
 }
 
@@ -73,11 +164,9 @@ export function CatchBoundary() {
 
   return (
     <Document title={`${caught.status} ${caught.statusText}`}>
-      <Container>
-        <p>
-          [CatchBoundary]: {caught.status} {caught.statusText}
-        </p>
-      </Container>
+      <p>
+        [CatchBoundary]: {caught.status} {caught.statusText}
+      </p>
     </Document>
   );
 }
@@ -85,9 +174,7 @@ export function CatchBoundary() {
 export function ErrorBoundary({ error }: { error: Error }) {
   return (
     <Document title="Error!">
-      <Container>
-        <p>[ErrorBoundary]: There was an error: {error.message}</p>
-      </Container>
+      <p>[ErrorBoundary]: There was an error: {error.message}</p>
     </Document>
   );
 }

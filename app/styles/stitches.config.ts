@@ -137,7 +137,7 @@ const colorsTokensLightTheme = {
   anchor: "$brand9",
   anchorHover: "$brand10",
   focusOutline: "$cyanA10",
-  background: "$brand3",
+  background: "#F0F3FB",
   backgroundInvert: "$brand11",
   backgroundSection: "$brand4",
 };
@@ -147,7 +147,7 @@ const colorsTokensDarkTheme = {
   anchor: "$brand10",
   anchorHover: "$brand11",
   focusOutline: "$cyanA10",
-  background: "$brand1",
+  background: "#0F1413",
   backgroundInvert: "$brand12",
   backgroundSection: "$brand2",
 };
@@ -493,20 +493,6 @@ export const darkTheme = createTheme("dark", {
 });
 
 globalCss({
-  "::selection": {
-    backgroundColor: "$brandA4",
-  },
-  ":-moz-focusring": {
-    "@desktop": {
-      outline: "auto",
-    },
-  },
-  ":focus": {
-    "@desktop": {
-      outline: "$focusOutline solid 2px",
-      outlineOffset: "2px",
-    },
-  },
   body: {
     color: "$text",
     backgroundColor: "$background",

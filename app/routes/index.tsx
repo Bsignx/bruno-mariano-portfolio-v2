@@ -1,10 +1,10 @@
 import type { LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
+import { useLoaderData } from "@remix-run/react";
 import { gql } from "graphql-request";
 
+import { ButtonToggleTheme } from "~/components";
 import { graphcmsClient } from "~/helpers";
-
 import { styled } from "../styles/stitches.config";
 
 const Container = styled("div", {
@@ -34,16 +34,7 @@ export default function Index() {
 
   return (
     <Container>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-      <h1>Welcome to Remix with Stitches Example</h1>
-      <ul>
-        <li>
-          <Link to="/jokes">Jokes</Link>
-        </li>
-        <li>
-          <Link to="/jokes-error">Jokes: Error</Link>
-        </li>
-      </ul>
+      <ButtonToggleTheme />
     </Container>
   );
 }
