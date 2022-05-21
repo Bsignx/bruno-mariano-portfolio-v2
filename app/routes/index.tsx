@@ -3,9 +3,8 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { gql } from "graphql-request";
 
-import { ButtonToggleTheme } from "~/components";
 import { graphcmsClient } from "~/helpers";
-import { styled } from "../styles/stitches.config";
+import { HomeTemplate } from "~/templates/home/home";
 
 export let loader: LoaderFunction = async ({ request }) => {
   const portfolio = await graphcmsClient.request(gql`
@@ -27,10 +26,5 @@ export let loader: LoaderFunction = async ({ request }) => {
 export default function Index() {
   let data = useLoaderData();
 
-  return (
-    <>
-      <ButtonToggleTheme />
-      AAAAA
-    </>
-  );
+  return <HomeTemplate />;
 }
