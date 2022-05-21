@@ -8,7 +8,7 @@ const colorsTokens = {
   white: "#F0F3FB",
   grayDark: "DBD3D3",
   grayLight: "3E4644",
-  linear: "linear-gradient(121.04deg, #FC466B 2.39%, #3F5EFB 87.83%)",
+  linear: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
 };
 
 const colorsTokensLightTheme = {
@@ -294,7 +294,7 @@ const utilsFunctions = {
   }),
 };
 
-export const { createTheme, styled, globalCss, getCssText, config } =
+export const { createTheme, styled, globalCss, getCssText, config, theme } =
   createStitches({
     theme: {
       colors: {
@@ -356,5 +356,10 @@ globalCss({
     boxSizing: "border-box",
     fontFamily: "$fontDefault",
     fontSize: "$3",
+  },
+
+  p: {
+    margin: "0",
+    lineHeight: "100%",
   },
 })();
