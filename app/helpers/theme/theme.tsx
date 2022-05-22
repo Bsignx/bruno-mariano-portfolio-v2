@@ -11,16 +11,16 @@
 import * as React from "react";
 import { useFetcher } from "@remix-run/react";
 
-enum Theme {
+enum THEME {
   DARK = "dark",
   LIGHT = "light",
 }
 
-const themes: Array<Theme> = Object.values(Theme);
+const themes: Array<THEME> = Object.values(THEME);
 
 type ThemeContextType = [
-  Theme | null,
-  React.Dispatch<React.SetStateAction<Theme | null>>
+  THEME | null,
+  React.Dispatch<React.SetStateAction<THEME | null>>
 ];
 
 const ThemeContext = React.createContext<ThemeContextType | undefined>(
@@ -32,7 +32,7 @@ ThemeContext.displayName = "ThemeContext";
 const prefersLightMQ = "(prefers-color-scheme: light)";
 
 const getPreferredTheme = () =>
-  window.matchMedia(prefersLightMQ).matches ? Theme.LIGHT : Theme.DARK;
+  window.matchMedia(prefersLightMQ).matches ? THEME.LIGHT : THEME.DARK;
 
 /**
  * ThemeProvider component
@@ -229,8 +229,8 @@ function Themed({
 /**
  * isTheme
  */
-function isTheme(value: unknown): value is Theme {
-  return typeof value === "string" && themes.includes(value as Theme);
+function isTheme(value: unknown): value is THEME {
+  return typeof value === "string" && themes.includes(value as THEME);
 }
 
 /**
@@ -240,7 +240,7 @@ export {
   ThemeProvider,
   useTheme,
   themes,
-  Theme,
+  THEME,
   isTheme,
   Themed,
   PreventFlashOnWrongTheme,

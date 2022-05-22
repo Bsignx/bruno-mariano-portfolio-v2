@@ -1,11 +1,12 @@
 import { useState } from "react";
-
 import {
   HiMenuAlt2 as OpenMenuIcon,
   HiOutlineX as CloseMenuICon,
 } from "react-icons/hi";
 
-import { styled, theme } from "~/styles";
+import { styled, theme as styleTheme } from "~/styles";
+import { useTheme, THEME } from "~/helpers";
+import { ButtonToggleTheme } from "./button-toggle-theme";
 
 const Container = styled("div", {
   display: "flex",
@@ -38,14 +39,15 @@ const OpenMenuIconWrapper = styled("div", {
 const Logo = styled("p", {
   color: "$hiContrast",
   fontSize: "$6",
-  marginBottom: "0.25rem",
+
+  fontWeight: "$semibold",
 
   span: {
     color: "highlight",
-    fontSize: "$10",
+    fontSize: "$8",
   },
   "@tabletUp": {
-    marginBottom: "0",
+    paddingBottom: "0.25rem",
   },
 });
 
@@ -57,6 +59,7 @@ const MenuLink = styled("a", {
   color: "$hiContrast",
   fontSize: "$3",
   textDecoration: "none",
+  fontWeight: "medium",
 
   "&:hover": {
     filter: "opacity(0.8)",
@@ -84,7 +87,6 @@ const MobileMenuNav = styled("nav", {
   fd: "column",
   alignItems: "center",
   justifyContent: "center",
-  background: "$highlight",
   position: "fixed",
   zIndex: "$overlay",
   top: 0,
@@ -94,6 +96,7 @@ const MobileMenuNav = styled("nav", {
   height: "100vh",
   overflow: "hidden",
   transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
+  background: "$background",
 
   variants: {
     visible: {
@@ -165,8 +168,8 @@ export const Menu = () => {
       as="header"
       css={{
         zIndex: isOpen
-          ? theme.zIndices.overlay
-          : `calc(${theme.zIndices.overlay} - 1)`,
+          ? styleTheme.zIndices.overlay
+          : `calc(${styleTheme.zIndices.overlay} - 1)`,
       }}
     >
       <OpenMenuIconWrapper
@@ -186,7 +189,11 @@ export const Menu = () => {
       <MenuNav
         css={{
           "@tabletUp": {
-            display: "block",
+            display: "flex",
+            alignItems: "center",
+            "& > :last-child": {
+              marginLeft: "$4",
+            },
           },
         }}
       >
@@ -195,6 +202,7 @@ export const Menu = () => {
             {name}
           </MenuLink>
         ))}
+        <ButtonToggleTheme />
       </MenuNav>
 
       <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
