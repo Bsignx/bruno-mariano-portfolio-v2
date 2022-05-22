@@ -360,6 +360,5 @@ globalCss({
 
   p: {
     margin: "0",
-    lineHeight: "100%",
   },
 })();
