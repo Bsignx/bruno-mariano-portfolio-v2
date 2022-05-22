@@ -141,6 +141,11 @@ const CloseMenuIconWrapper = styled("div", {
   },
 });
 
+const WrapperWithToggleTheme = styled("div", {
+  display: "flex",
+  alignItems: "center",
+});
+
 const MENU_ITEMS = [
   {
     name: "About-me",
@@ -186,24 +191,26 @@ export const Menu = () => {
         bm<span>.</span>
       </Logo>
 
-      <MenuNav
-        css={{
-          "@tabletUp": {
-            display: "flex",
-            alignItems: "center",
-            "& > :last-child": {
-              marginLeft: "$4",
+      <WrapperWithToggleTheme>
+        <MenuNav
+          css={{
+            "@tabletUp": {
+              display: "block",
             },
-          },
-        }}
-      >
-        {MENU_ITEMS.map(({ name, path }) => (
-          <MenuLink key={name} href={path}>
-            {name}
-          </MenuLink>
-        ))}
-        <ButtonToggleTheme />
-      </MenuNav>
+          }}
+        >
+          {MENU_ITEMS.map(({ name, path }) => (
+            <MenuLink key={name} href={path}>
+              {name}
+            </MenuLink>
+          ))}
+        </MenuNav>{" "}
+        <ButtonToggleTheme
+          css={{
+            marginLeft: "$4",
+          }}
+        />
+      </WrapperWithToggleTheme>
 
       <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
         <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>

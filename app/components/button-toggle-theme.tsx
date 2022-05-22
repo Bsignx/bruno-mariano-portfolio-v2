@@ -1,4 +1,7 @@
+import type { ButtonHTMLAttributes } from "react";
+
 import { THEME, useTheme } from "~/helpers";
+import type { CSS } from "~/styles";
 import { styled } from "~/styles";
 
 const ButtonToggleThemeStyled = styled("button", {
@@ -35,7 +38,7 @@ const MoonIcon = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#FC466B" />
-        <stop offset="1" stop-color="#3F5EFB" />
+        <stop offset="1" stopColor="#3F5EFB" />
       </linearGradient>
     </defs>
   </svg>
@@ -64,13 +67,17 @@ const SunIcon = () => (
         gradientUnits="userSpaceOnUse"
       >
         <stop stopColor="#FC466B" />
-        <stop offset="1" stop-color="#3F5EFB" />
+        <stop offset="1" stopColor="#3F5EFB" />
       </linearGradient>
     </defs>
   </svg>
 );
 
-export const ButtonToggleTheme = () => {
+type ButtonToggleThemeProps = {
+  css?: CSS;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const ButtonToggleTheme = ({ css, ...rest }: ButtonToggleThemeProps) => {
   const [theme, setTheme] = useTheme();
 
   const handleChangeTheme = () => {
@@ -78,7 +85,12 @@ export const ButtonToggleTheme = () => {
   };
 
   return (
-    <ButtonToggleThemeStyled type="button" onClick={handleChangeTheme}>
+    <ButtonToggleThemeStyled
+      type="button"
+      onClick={handleChangeTheme}
+      css={css}
+      {...rest}
+    >
       {theme === THEME.DARK ? <SunIcon /> : <MoonIcon />}
     </ButtonToggleThemeStyled>
   );
