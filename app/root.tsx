@@ -17,7 +17,7 @@ import {
 } from "@remix-run/react";
 import { useContext, useEffect } from "react";
 
-import type { Theme } from "./helpers";
+import type { THEME } from "./helpers";
 import { getThemeSession } from "./helpers";
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "./helpers";
 import { getEnv } from "./utils";
@@ -49,7 +49,7 @@ export const meta: MetaFunction = () => ({
 });
 
 export type LoaderData = {
-  theme: Theme | null;
+  theme: THEME | null;
   ENV: ReturnType<typeof getEnv>;
 };
 

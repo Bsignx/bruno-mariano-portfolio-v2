@@ -358,6 +358,18 @@ globalCss({
     fontSize: "$3",
   },
 
+  "body::before": {
+    content: "",
+    position: "absolute",
+    top: "0",
+    left: "0",
+    width: "100%",
+    height: "100%",
+    background: "$highlight",
+    opacity: 0.4,
+    clipPath: "circle(20% at 45% 50%)",
+  },
+
   p: {
     margin: "0",
   },

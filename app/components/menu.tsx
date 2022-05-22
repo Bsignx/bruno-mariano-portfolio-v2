@@ -207,7 +207,9 @@ export const Menu = () => {
         </MenuNav>{" "}
         <ButtonToggleTheme
           css={{
-            marginLeft: "$4",
+            "@tabletUp": {
+              marginLeft: "$4",
+            },
           }}
         />
       </WrapperWithToggleTheme>
