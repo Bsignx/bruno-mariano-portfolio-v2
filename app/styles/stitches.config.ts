@@ -294,48 +294,55 @@ const utilsFunctions = {
   }),
 };
 
-export const { createTheme, styled, globalCss, getCssText, config, theme } =
-  createStitches({
-    theme: {
-      colors: {
-        ...colorsTokens,
-        ...colorsTokensLightTheme,
-      },
-      space: {
-        ...spaceTokens,
-      },
-      sizes: {
-        ...sizesTokens,
-      },
-      radiiTokens: {
-        ...radiiTokens,
-      },
-      zIndices: {
-        ...zIndicesTokens,
-      },
-      fonts: {
-        ...fontsTokens,
-      },
-      fontSizes: {
-        ...fontSizesTokens,
-      },
-      fontWeights: {
-        ...fontWeightsTokens,
-      },
-      lineHeights: {
-        ...lineHeightsTokens,
-      },
-      letterSpacings: {
-        ...letterSpacingsTokens,
-      },
+export const {
+  createTheme,
+  styled,
+  globalCss,
+  getCssText,
+  config,
+  theme,
+  keyframes,
+} = createStitches({
+  theme: {
+    colors: {
+      ...colorsTokens,
+      ...colorsTokensLightTheme,
     },
-    media: {
-      ...mediaTokens,
+    space: {
+      ...spaceTokens,
     },
-    utils: {
-      ...utilsFunctions,
+    sizes: {
+      ...sizesTokens,
     },
-  });
+    radiiTokens: {
+      ...radiiTokens,
+    },
+    zIndices: {
+      ...zIndicesTokens,
+    },
+    fonts: {
+      ...fontsTokens,
+    },
+    fontSizes: {
+      ...fontSizesTokens,
+    },
+    fontWeights: {
+      ...fontWeightsTokens,
+    },
+    lineHeights: {
+      ...lineHeightsTokens,
+    },
+    letterSpacings: {
+      ...letterSpacingsTokens,
+    },
+  },
+  media: {
+    ...mediaTokens,
+  },
+  utils: {
+    ...utilsFunctions,
+  },
+});
 
 export type CSS = Stitches.CSS<typeof config>;
 
@@ -347,6 +354,16 @@ export const darkTheme = createTheme("dark", {
   },
 });
 
+const traverseBottomRight = keyframes({
+  "0%": {},
+  "100%": { transform: "translateY(160px) translateX(150px) rotate(60deg)" },
+});
+
+const mobileTraverseBottomRight = keyframes({
+  "0%": {},
+  "100%": { transform: "translateY(100px) translateX(25px) rotate(60deg)" },
+});
+
 globalCss({
   body: {
     color: "$text",
@@ -356,6 +373,7 @@ globalCss({
     boxSizing: "border-box",
     fontFamily: "$fontDefault",
     fontSize: "$3",
+    overflow: "hidden",
   },
 
   "body::before": {
@@ -366,11 +384,25 @@ globalCss({
     width: "100%",
     height: "100%",
     background: "$highlight",
-    opacity: 0.4,
-    clipPath: "circle(20% at 45% 50%)",
+    opacity: 0.2,
+    clipPath: "circle(18% at 45% 50%)",
+    animation: `${mobileTraverseBottomRight} 10s ease-in-out infinite alternate`,
   },
 
-  p: {
+  "@desktopUp": {
+    "body::before": {
+      clipPath: "circle(15% at 45% 50%)",
+      animation: `${traverseBottomRight} 10s ease-in-out infinite alternate`,
+    },
+  },
+
+  "@largeDesktopUp": {
+    "body::before": {
+      clipPath: "circle(10% at 45% 50%)",
+    },
+  },
+
+  "p, h1, h2, h3, h4, h5": {
     margin: "0",
   },
 })();
