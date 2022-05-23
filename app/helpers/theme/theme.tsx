@@ -42,9 +42,9 @@ function ThemeProvider({
   specifiedTheme,
 }: {
   children: React.ReactNode;
-  specifiedTheme: Theme | null;
+  specifiedTheme: THEME | null;
 }) {
-  const [theme, setTheme] = React.useState<Theme | null>(() => {
+  const [theme, setTheme] = React.useState<THEME | null>(() => {
     /**
      * On the server, if we don't have a specified theme then we should
      * return null and the clientThemeCode will set the theme for us
@@ -95,7 +95,7 @@ function ThemeProvider({
     const mediaQuery = window.matchMedia(prefersLightMQ);
 
     const handleChange = () => {
-      setTheme(mediaQuery.matches ? Theme.LIGHT : Theme.DARK);
+      setTheme(mediaQuery.matches ? THEME.LIGHT : THEME.DARK);
     };
 
     mediaQuery.addEventListener("change", handleChange);

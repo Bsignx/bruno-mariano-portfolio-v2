@@ -5,7 +5,6 @@ import {
 } from "react-icons/hi";
 
 import { styled, theme as styleTheme } from "~/styles";
-import { useTheme, THEME } from "~/helpers";
 import { ButtonToggleTheme } from "./button-toggle-theme";
 
 const Container = styled("div", {
