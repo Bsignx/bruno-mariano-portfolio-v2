@@ -1,4 +1,4 @@
-import { Container, Hero, Menu } from "~/components";
+import { AboutMe, Container, Hero, Menu } from "~/components";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 
@@ -22,6 +22,7 @@ export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
         <Menu />
         <main>
           <Hero portfolio={portfolio} />
+          <AboutMe portfolio={portfolio} />
         </main>
       </Container>
     </GlassmorphismBase>
