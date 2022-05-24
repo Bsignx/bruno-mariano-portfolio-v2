@@ -148,19 +148,19 @@ const WrapperWithToggleTheme = styled("div", {
 const MENU_ITEMS = [
   {
     name: "About-me",
-    path: "#about-me",
+    path: "about-me",
   },
   {
     name: "Experience",
-    path: "#experience",
+    path: "experience",
   },
   {
     name: "Projects",
-    path: "#projects",
+    path: "projects",
   },
   {
     name: "Contact",
-    path: "#contact",
+    path: "contact",
   },
 ];
 
