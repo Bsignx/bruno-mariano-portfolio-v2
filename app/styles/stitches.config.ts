@@ -6,8 +6,8 @@ export type { VariantProps } from "@stitches/react";
 const colorsTokens = {
   black: "#0F1413",
   white: "#F0F3FB",
-  grayDark: "DBD3D3",
-  grayLight: "3E4644",
+  grayDark: "#DBD3D3",
+  grayLight: "#3E4644",
   linear: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
 };
 
@@ -373,7 +373,7 @@ globalCss({
     boxSizing: "border-box",
     fontFamily: "$fontDefault",
     fontSize: "$3",
-    overflow: "hidden",
+    overflowX: "hidden",
   },
 
   "body::before": {
