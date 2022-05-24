@@ -51,12 +51,13 @@ const Title = styled("h1", {
 
 const Subtitle = styled("h2", {
   color: "$hiContrast",
-  fontSize: "$4",
+  fontSize: "$5",
   fontWeight: "$medium",
-  marginTop: "$2",
+  marginTop: "$4",
 
   "@tabletUp": {
     fontSize: "$5",
+    marginTop: "$2",
   },
 
   "@desktopUp": {
@@ -66,14 +67,10 @@ const Subtitle = styled("h2", {
 
 const Description = styled("p", {
   color: "$hiContrast",
-  fontSize: "$2",
+  fontSize: "$3",
   fontWeight: "$regular",
   marginTop: "$4",
   marginBottom: "$6",
-
-  "@tabletUp": {
-    fontSize: "$3",
-  },
 });
 
 const ResumeLink = styled("a", {
@@ -95,7 +92,7 @@ const ResumeLink = styled("a", {
     padding: "0.125rem",
     background: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
     WebkitMask:
-      "linear-gradient(#fff 0 0) content-box, \n     linear-gradient(#fff 0 0)",
+      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
     WebkitMaskComposite: "xor",
     maskComposite: "exclude",
   },
