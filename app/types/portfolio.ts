@@ -18,6 +18,15 @@ export interface Portfolio {
   experienceTitle: string;
   project: Project[];
   heroResumeAttachment: HeroResumeAttachment;
+  experienceJob: ExperienceJob[];
+}
+
+export interface ExperienceJob {
+  companyName: string;
+  jobTitle: string;
+  jobDescription: string[];
+  id: string;
+  periodWorked: string;
 }
 
 export interface HeroImage {

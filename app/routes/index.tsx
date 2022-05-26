@@ -43,6 +43,13 @@ export let loader: LoaderFunction = async () => {
           fileName
           id
         }
+        experienceJob {
+          companyName
+          jobTitle
+          jobDescription
+          id
+          periodWorked
+        }
       }
     }
   `);
