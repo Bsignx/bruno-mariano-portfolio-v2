@@ -9,7 +9,7 @@ const Container = styled("section", {
 });
 
 const SkillsContainer = styled("div", {
-  mt: "$6",
+  mt: "$7",
 });
 
 const Skill = styled("div", {
@@ -28,7 +28,7 @@ const Skill = styled("div", {
     position: "absolute",
     inset: "0",
     borderRadius: "0.5rem",
-    padding: "0.125rem",
+    padding: "0.1rem",
     background: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
     WebkitMask:
       "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
