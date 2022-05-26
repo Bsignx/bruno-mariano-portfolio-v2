@@ -9,7 +9,7 @@ import { ButtonToggleTheme } from "./button-toggle-theme";
 
 const Container = styled("div", {
   display: "flex",
-  pd: "$8 0 0 0",
+  pd: "$7 0 0 0",
   ai: "flex-end",
   justifyContent: "space-between",
 });
@@ -42,8 +42,12 @@ const Logo = styled("p", {
   fontWeight: "$semibold",
 
   span: {
-    color: "highlight",
     fontSize: "$8",
+    background: "$highlight",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    textFillColor: "transparent",
   },
   "@tabletUp": {
     paddingBottom: "0.25rem",

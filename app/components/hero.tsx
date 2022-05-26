@@ -32,7 +32,11 @@ const Title = styled("h1", {
   lineHeight: "100%",
 
   span: {
-    color: "highlight",
+    background: "$highlight",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    backgroundClip: "text",
+    textFillColor: "transparent",
     fontSize: "4rem",
   },
 
@@ -89,7 +93,7 @@ const ResumeLink = styled("a", {
     position: "absolute",
     inset: "0",
     borderRadius: "1.5625rem",
-    padding: "0.125rem",
+    padding: "0.1rem",
     background: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
     WebkitMask:
       "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
