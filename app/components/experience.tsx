@@ -3,7 +3,7 @@ import { useState } from "react";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { SectionTitle } from "./section-title";
-import { Paragraph } from "./typography";
+import { Heading3, Paragraph } from "./typography";
 
 const Container = styled("section", {
   maxWidth: "37.5rem",
@@ -12,7 +12,7 @@ const Container = styled("section", {
 
 const ExperiencesContainer = styled("div", {
   display: "flex",
-  marginTop: "$7",
+  marginTop: "$8",
   flexDirection: "column",
   alignItems: "center",
 
@@ -87,12 +87,6 @@ const HighlightMark = styled("span", {
   },
 });
 
-const JobTitle = styled("h3", {
-  fontSize: "$4",
-  fontWeight: "$medium",
-  color: "$hiContrast",
-});
-
 const HighlightText = styled("span", {
   fontSize: "$3",
   fontWeight: "$regular",
@@ -151,9 +145,9 @@ export const Experience = ({
           ))}
         </ButtonsContainer>
         <ExperienceContainer>
-          <JobTitle>
+          <Heading3>
             {jobTitle} - <HighlightText>{companyName}</HighlightText>
-          </JobTitle>
+          </Heading3>
 
           <PeriodWorked>{periodWorked}</PeriodWorked>
 

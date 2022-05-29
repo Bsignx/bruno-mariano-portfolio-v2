@@ -2,6 +2,7 @@ import type { Portfolio } from "~/types";
 import { styled } from "~/styles";
 import { SectionTitle } from "./section-title";
 import { Paragraph } from "./typography";
+import { HighlightInfo } from "./highlight-info";
 
 const Container = styled("section", {
   maxWidth: "40.625rem",
@@ -9,32 +10,7 @@ const Container = styled("section", {
 });
 
 const SkillsContainer = styled("div", {
-  mt: "$7",
-});
-
-const Skill = styled("div", {
-  color: "$hiContrast",
-  fontWeight: "$bold",
-  fontSize: "$2",
-  border: "none",
-  position: "relative",
-  pd: "$2 $6",
-  display: "inline-block",
-  mb: "$3",
-  mr: "$3",
-
-  "&::before": {
-    content: "",
-    position: "absolute",
-    inset: "0",
-    borderRadius: "0.5rem",
-    padding: "0.1rem",
-    background: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
-    WebkitMask:
-      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    WebkitMaskComposite: "xor",
-    maskComposite: "exclude",
-  },
+  mt: "$8",
 });
 
 type AboutMeProps = {
@@ -59,7 +35,7 @@ export const AboutMe = ({
     </Paragraph>
     <SkillsContainer>
       {aboutTechName.map((skill) => (
-        <Skill key={skill}>{skill}</Skill>
+        <HighlightInfo key={skill}>{skill}</HighlightInfo>
       ))}
     </SkillsContainer>
   </Container>
