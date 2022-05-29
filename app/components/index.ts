@@ -9,3 +9,6 @@ export * from "./experience";
 export * from "./projects";
 export * from "./icons";
 export * from "./highlight-info";
+export * from "./contact";
+export * from "./cta";
+export * from "./footer";

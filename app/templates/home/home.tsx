@@ -1,7 +1,9 @@
 import {
   AboutMe,
+  Contact,
   Container,
   Experience,
+  Footer,
   Hero,
   Menu,
   Projects,
@@ -24,16 +26,20 @@ type HomeTemplateProps = {
 
 export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
   return (
-    <GlassmorphismBase>
-      <Container>
-        <Menu />
-        <main>
-          <Hero portfolio={portfolio} />
-          <AboutMe portfolio={portfolio} />
-          <Experience portfolio={portfolio} />
-          <Projects portfolio={portfolio} />
-        </main>
-      </Container>
-    </GlassmorphismBase>
+    <>
+      <Menu /> {/* fix */}
+      <GlassmorphismBase>
+        <Container>
+          <main>
+            <Hero portfolio={portfolio} />
+            <AboutMe portfolio={portfolio} />
+            <Experience portfolio={portfolio} />
+            <Projects portfolio={portfolio} />
+            <Contact portfolio={portfolio} />
+            <Footer portfolio={portfolio} />
+          </main>
+        </Container>
+      </GlassmorphismBase>
+    </>
   );
 };
