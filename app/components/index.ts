@@ -6,3 +6,6 @@ export * from "./about-me";
 export * from "./section-title";
 export * from "./typography";
 export * from "./experience";
+export * from "./projects";
+export * from "./icons";
+export * from "./highlight-info";

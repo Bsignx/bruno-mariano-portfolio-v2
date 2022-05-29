@@ -74,6 +74,7 @@ export interface Project {
   techUsedName: string[];
   stage: string;
   repositoryUrl: string;
+  websiteUrl: string;
   id: string;
   description: string;
 }

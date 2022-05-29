@@ -35,6 +35,7 @@ export let loader: LoaderFunction = async () => {
           techUsedName
           stage
           repositoryUrl
+          websiteUrl
           id
           description
         }
