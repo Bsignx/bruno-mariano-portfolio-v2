@@ -7,6 +7,10 @@ import { HighlightInfo } from "./highlight-info";
 const Container = styled("section", {
   maxWidth: "40.625rem",
   margin: "$24 auto",
+
+  "@tabletUp": {
+    margin: "$40 auto",
+  },
 });
 
 const SkillsContainer = styled("div", {
@@ -20,7 +24,7 @@ type AboutMeProps = {
 export const AboutMe = ({
   portfolio: { aboutTitle, aboutDescription, aboutTechName },
 }: AboutMeProps) => (
-  <Container id="#about-me">
+  <Container id="about-me">
     <SectionTitle>
       <SectionTitle.HighlightTitleNumber>01.</SectionTitle.HighlightTitleNumber>{" "}
       {aboutTitle}
