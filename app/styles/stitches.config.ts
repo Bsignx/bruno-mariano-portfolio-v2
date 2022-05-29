@@ -5,7 +5,9 @@ export type { VariantProps } from "@stitches/react";
 
 const colorsTokens = {
   black: "#0F1413",
+  black2: "#1D2428",
   white: "#F0F3FB",
+  white2: "#EDF0FA",
   grayDark: "#DBD3D3",
   grayLight: "#3E4644",
   linear: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
@@ -16,6 +18,7 @@ const colorsTokensLightTheme = {
   loContrast: "$grayLight",
   highlight: "$linear",
   background: "$white",
+  background2: "$white2",
 };
 
 const colorsTokensDarkTheme = {
@@ -23,6 +26,7 @@ const colorsTokensDarkTheme = {
   loContrast: "$grayDark",
   highlight: "$linear",
   background: "$black",
+  background2: "$black2",
 };
 
 const spaceTokens = {
@@ -386,13 +390,13 @@ globalCss({
     background: "$highlight",
     opacity: 0.2,
     clipPath: "circle(18% at 45% 50%)",
-    animation: `${mobileTraverseBottomRight} 10s ease-in-out infinite alternate`,
+    // animation: `${mobileTraverseBottomRight} 10s ease-in-out infinite alternate`,
   },
 
   "@desktopUp": {
     "body::before": {
       clipPath: "circle(15% at 45% 50%)",
-      animation: `${traverseBottomRight} 10s ease-in-out infinite alternate`,
+      // animation: `${traverseBottomRight} 10s ease-in-out infinite alternate`,
     },
   },
 
