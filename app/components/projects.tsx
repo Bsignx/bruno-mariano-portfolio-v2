@@ -8,10 +8,13 @@ import { Heading3, Paragraph } from "./typography";
 
 const Container = styled("section", {
   mb: "$24",
-  maxWidth: "68.75rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+
+  "@tabletUp": {
+    mb: "$40",
+  },
 });
 
 const ProjectsContainer = styled("div", {
@@ -27,10 +30,14 @@ const ProjectContainer = styled("article", {
   flexDirection: "column",
   justifyContent: "space-between",
   background: "$background2",
-  boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+  boxShadow: "0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)",
   pd: "$6",
   borderRadius: "0.5rem",
-  height: "16.75rem",
+  height: "18.75rem",
+
+  "@tabletUp": {
+    height: "16.75rem",
+  },
 });
 
 const IconsContainer = styled("div", {
@@ -95,7 +102,7 @@ export const Projects = ({
   };
 
   return (
-    <Container>
+    <Container id="projects">
       <SectionTitle>
         <SectionTitle.HighlightTitleNumber>
           03.
