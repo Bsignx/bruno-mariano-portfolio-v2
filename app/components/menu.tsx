@@ -8,8 +8,9 @@ import { styled, theme as styleTheme } from "~/styles";
 import { ButtonToggleTheme } from "./button-toggle-theme";
 
 const Container = styled("div", {
+  width: "100%",
   display: "flex",
-  pd: "$7 0 0 0",
+  pd: "$4 0 0 0",
   ai: "flex-end",
   justifyContent: "space-between",
 });
@@ -152,19 +153,19 @@ const WrapperWithToggleTheme = styled("div", {
 const MENU_ITEMS = [
   {
     name: "About-me",
-    path: "about-me",
+    path: "#about-me",
   },
   {
     name: "Experience",
-    path: "experience",
+    path: "#experience",
   },
   {
     name: "Projects",
-    path: "projects",
+    path: "#projects",
   },
   {
     name: "Contact",
-    path: "contact",
+    path: "#contact",
   },
 ];
 
