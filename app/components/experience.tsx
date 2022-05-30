@@ -8,6 +8,10 @@ import { Heading3, Paragraph } from "./typography";
 const Container = styled("section", {
   maxWidth: "37.5rem",
   margin: "0 auto $24",
+
+  "@tabletUp": {
+    margin: "0 auto $40",
+  },
 });
 
 const ExperiencesContainer = styled("div", {
@@ -54,9 +58,9 @@ const JobButton = styled("button", {
   },
 
   "@tabletUp": {
-    fontSize: "$4",
+    pd: "$1 $3",
     "& + button": {
-      marginTop: "$2",
+      marginTop: "$1",
     },
   },
 });
@@ -68,7 +72,7 @@ const HighlightMark = styled("span", {
   borderRadius: "0.25rem",
   width: "calc(100% - 1.5rem)",
   height: "0.125rem",
-  top: "1.25rem",
+  top: "1.5rem",
   left: "0.75rem",
 
   "@tabletUp": {
@@ -106,7 +110,7 @@ const PeriodWorked = styled("p", {
 });
 
 const JobDescriptionCotainer = styled("div", {
-  mt: "$3",
+  mt: "$4",
   color: "$loContrast",
   display: "flex",
 });
@@ -124,7 +128,7 @@ export const Experience = ({
     experienceJob[activeExperienceIndex];
 
   return (
-    <Container>
+    <Container id="experience">
       <SectionTitle>
         <SectionTitle.HighlightTitleNumber>
           02.
