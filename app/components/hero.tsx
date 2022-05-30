@@ -5,25 +5,21 @@ import {
 
 import { styled, theme } from "~/styles";
 import type { Portfolio } from "~/types";
+import { Cta } from "./cta";
 
 const Container = styled("section", {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-
-  "@tabletUp": {
-    flexDirection: "row",
-    alignItems: "initial",
-  },
-});
-
-const InfoContainer = styled("div", {
   marginTop: "$24",
 
   "@tabletUp": {
-    marginTop: "$32",
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
+
+const InfoContainer = styled("div", {});
 
 const Title = styled("h1", {
   color: "$hiContrast",
@@ -75,35 +71,6 @@ const Description = styled("p", {
   fontWeight: "$regular",
   marginTop: "$4",
   marginBottom: "$6",
-});
-
-const ResumeLink = styled("a", {
-  fontSize: "$3",
-  pd: "$4 $8",
-  color: "$hiContrast",
-  backgroundColor: "transparent",
-  fontWeight: "$bold",
-  cursor: "pointer",
-  border: "none",
-  position: "relative",
-  textDecoration: "none",
-
-  "&::before": {
-    content: "",
-    position: "absolute",
-    inset: "0",
-    borderRadius: "1.5625rem",
-    padding: "0.1rem",
-    background: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
-    WebkitMask:
-      "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-    WebkitMaskComposite: "xor",
-    maskComposite: "exclude",
-  },
-
-  "&:hover": {
-    filter: "opacity(0.8)",
-  },
 });
 
 const CallToActionContainer = styled("div", {
@@ -160,14 +127,14 @@ export const Hero = ({
         <Subtitle>{heroSubtitle}</Subtitle>
         <Description>{heroDescription}</Description>
         <CallToActionContainer>
-          <ResumeLink
+          <Cta
             href={heroResumeAttachment.url}
             target="_blank"
             rel="noopener noreferrer"
             title={heroButtonName}
           >
             {heroButtonName}
-          </ResumeLink>
+          </Cta>
           <SocialLink
             href="https://github.com/Bsignx"
             target="_blank"
