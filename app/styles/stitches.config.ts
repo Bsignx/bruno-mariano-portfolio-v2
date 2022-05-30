@@ -377,7 +377,7 @@ globalCss({
     boxSizing: "border-box",
     fontFamily: "$fontDefault",
     fontSize: "$3",
-    overflowX: "hidden",
+    webkitFontSmoothing: "antialiased",
   },
 
   "body::before": {
