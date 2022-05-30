@@ -7,6 +7,7 @@ const Title = styled("h2", {
   fontSize: "$5",
   fontWeight: "$semibold",
   lineHeight: "100%",
+  textAlign: "center",
 
   "@tabletUp": {
     fontSize: "$6",
