@@ -358,14 +358,14 @@ export const darkTheme = createTheme("dark", {
   },
 });
 
-const traverseBottomRight = keyframes({
+export const traverseUpLeft = keyframes({
   "0%": {},
-  "100%": { transform: "translateY(160px) translateX(150px) rotate(60deg)" },
+  "100%": { transform: "translateY(-100px) translateX(-150px) rotate(180deg)" },
 });
 
-const mobileTraverseBottomRight = keyframes({
+export const traverseUpRight = keyframes({
   "0%": {},
-  "100%": { transform: "translateY(100px) translateX(25px) rotate(60deg)" },
+  "100%": { transform: "translateY(-200px) translateX(150px) rotate(360deg)" },
 });
 
 globalCss({
@@ -378,32 +378,6 @@ globalCss({
     fontFamily: "$fontDefault",
     fontSize: "$3",
     webkitFontSmoothing: "antialiased",
-  },
-
-  "body::before": {
-    content: "",
-    position: "absolute",
-    top: "0",
-    left: "0",
-    width: "100%",
-    height: "100%",
-    background: "$highlight",
-    opacity: 0.2,
-    clipPath: "circle(18% at 45% 50%)",
-    // animation: `${mobileTraverseBottomRight} 10s ease-in-out infinite alternate`,
-  },
-
-  "@desktopUp": {
-    "body::before": {
-      clipPath: "circle(15% at 45% 50%)",
-      // animation: `${traverseBottomRight} 10s ease-in-out infinite alternate`,
-    },
-  },
-
-  "@largeDesktopUp": {
-    "body::before": {
-      clipPath: "circle(10% at 45% 50%)",
-    },
   },
 
   "p, h1, h2, h3, h4, h5": {

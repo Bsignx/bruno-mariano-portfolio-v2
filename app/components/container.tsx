@@ -7,4 +7,10 @@ export const Container = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   padding: "0 2rem",
+  position: "relative",
+  overflow: "hidden",
+
+  "@desktopUp": {
+    overflow: "initial",
+  },
 });
