@@ -11,6 +11,8 @@ const colorsTokens = {
   grayDark: "#DBD3D3",
   grayLight: "#3E4644",
   linear: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
+  blurDark: "hsla(210deg, 30%, 8%, 0.70)",
+  blurLight: "rgba(0,0,0,0)",
 };
 
 const colorsTokensLightTheme = {
@@ -19,6 +21,7 @@ const colorsTokensLightTheme = {
   highlight: "$linear",
   background: "$white",
   background2: "$white2",
+  blurBackground: "$blurLight",
 };
 
 const colorsTokensDarkTheme = {
@@ -27,6 +30,7 @@ const colorsTokensDarkTheme = {
   highlight: "$linear",
   background: "$black",
   background2: "$black2",
+  blurBackground: "$blurDark",
 };
 
 const spaceTokens = {

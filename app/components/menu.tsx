@@ -100,7 +100,8 @@ const MobileMenuNav = styled("nav", {
   height: "100vh",
   overflow: "hidden",
   transition: "opacity 0.3s ease-in-out, visibility 0.3s ease-in-out",
-  background: "$background",
+  background: "$blurBackground",
+  backdropFilter: "blur(0.625rem)",
 
   variants: {
     visible: {
