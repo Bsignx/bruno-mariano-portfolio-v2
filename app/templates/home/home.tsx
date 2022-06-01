@@ -64,6 +64,10 @@ const CircleContainer = styled("div", {
   },
 });
 
+const MainContainer = styled("main", {
+  zIndex: 1,
+});
+
 type HomeTemplateProps = {
   portfolio: Portfolio;
 };
@@ -90,14 +94,14 @@ export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
       </CirclesContainer>
 
       <Menu />
-      <main>
+      <MainContainer>
         <Hero portfolio={portfolio} />
         <AboutMe portfolio={portfolio} />
         <Experience portfolio={portfolio} />
         <Projects portfolio={portfolio} />
         <Contact portfolio={portfolio} />
         <Footer portfolio={portfolio} />
-      </main>
+      </MainContainer>
     </Container>
   );
 };
