@@ -94,6 +94,7 @@ const Document = ({ children, title }: DocumentProps) => {
 
       <DocumentBody>
         {children}
+        <div id="menu-mobile" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.ENV = ${JSON.stringify(data.ENV)};`,

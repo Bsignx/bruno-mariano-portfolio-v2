@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { ClientOnly } from "remix-utils";
 import {
   HiMenuAlt2 as OpenMenuIcon,
   HiOutlineX as CloseMenuICon,
@@ -173,6 +175,14 @@ const MENU_ITEMS = [
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   return (
     <Container
       as="header"
@@ -218,25 +228,35 @@ export const Menu = () => {
           }}
         />
       </WrapperWithToggleTheme>
-
-      <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
-        <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
-          <CloseMenuICon aria-label="close menu" />
-        </CloseMenuIconWrapper>
-        {MENU_ITEMS.map(({ name, path }) => (
-          <MenuLink
-            key={name}
-            href={path}
-            mobile
-            css={{
-              transform: isOpen ? "translateY(0)" : "translateY(3rem)",
-              transition: "transform 0.3s ease-in-out",
-            }}
-          >
-            {name}
-          </MenuLink>
-        ))}
-      </MobileMenuNav>
+      <ClientOnly fallback="Loading...">
+        {() =>
+          createPortal(
+            <MobileMenuNav
+              aria-hidden={!isOpen}
+              visible={isOpen}
+              hide={!isOpen}
+            >
+              <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
+                <CloseMenuICon aria-label="close menu" />
+              </CloseMenuIconWrapper>
+              {MENU_ITEMS.map(({ name, path }) => (
+                <MenuLink
+                  key={name}
+                  href={path}
+                  mobile
+                  css={{
+                    transform: isOpen ? "translateY(0)" : "translateY(3rem)",
+                    transition: "transform 0.3s ease-in-out",
+                  }}
+                >
+                  {name}
+                </MenuLink>
+              ))}
+            </MobileMenuNav>,
+            document.getElementById("menu-mobile") as HTMLElement
+          )
+        }
+      </ClientOnly>
     </Container>
   );
 };
