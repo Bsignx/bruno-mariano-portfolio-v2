@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { ClientOnly } from "remix-utils";
+import { scroller } from "react-scroll";
 import {
   HiMenuAlt2 as OpenMenuIcon,
   HiOutlineX as CloseMenuICon,
@@ -66,6 +67,7 @@ const MenuLink = styled("a", {
   fontSize: "$3",
   textDecoration: "none",
   fontWeight: "medium",
+  cursor: "pointer",
 
   "&:hover": {
     filter: "opacity(0.8)",
@@ -156,24 +158,34 @@ const WrapperWithToggleTheme = styled("div", {
 const MENU_ITEMS = [
   {
     name: "About-me",
-    path: "#about-me",
+    path: "about-me",
   },
   {
     name: "Experience",
-    path: "#experience",
+    path: "experience",
   },
   {
     name: "Projects",
-    path: "#projects",
+    path: "projects",
   },
   {
     name: "Contact",
-    path: "#contact",
+    path: "contact",
   },
 ];
 
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const scrollTo = (element: string) => {
+    scroller.scrollTo(element, {
+      duration: 600,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    });
+
+    isOpen && setIsOpen(false);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -215,7 +227,7 @@ export const Menu = () => {
           }}
         >
           {MENU_ITEMS.map(({ name, path }) => (
-            <MenuLink key={name} href={path}>
+            <MenuLink key={name} onClick={() => scrollTo(path)}>
               {name}
             </MenuLink>
           ))}
@@ -242,7 +254,7 @@ export const Menu = () => {
               {MENU_ITEMS.map(({ name, path }) => (
                 <MenuLink
                   key={name}
-                  href={path}
+                  onClick={() => scrollTo(path)}
                   mobile
                   css={{
                     transform: isOpen ? "translateY(0)" : "translateY(3rem)",
