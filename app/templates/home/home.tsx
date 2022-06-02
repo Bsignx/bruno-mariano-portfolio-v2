@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 import {
   AboutMe,
   Contact,
@@ -8,6 +10,7 @@ import {
   Menu,
   Projects,
 } from "~/components";
+import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
 import { styled, traverseUpLeft, traverseUpRight } from "~/styles";
 import type { Portfolio } from "~/types";
 
@@ -45,7 +48,7 @@ const SecondCircle = styled("div", {
   },
 });
 
-const CirclesContainer = styled("div", {
+const CirclesContainer = styled(motion.div, {
   position: "absolute",
   top: "8rem",
   right: 0,
@@ -73,9 +76,16 @@ type HomeTemplateProps = {
 };
 
 export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
+  const { controls, ref } = useAnimateOnScroll();
+
   return (
     <Container>
-      <CirclesContainer>
+      <CirclesContainer
+        variants={animateOnScrollVariant}
+        animate={controls}
+        initial="hidden"
+        ref={ref}
+      >
         <CircleContainer>
           <FirstCircle />
         </CircleContainer>

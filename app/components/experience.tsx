@@ -1,11 +1,13 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
 
+import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { SectionTitle } from "./section-title";
 import { Heading3, Paragraph } from "./typography";
 
-const Container = styled("section", {
+const Container = styled(motion.section, {
   maxWidth: "37.5rem",
   margin: "0 auto $24",
 
@@ -124,11 +126,19 @@ export const Experience = ({
 }: ExperienceProps) => {
   const [activeExperienceIndex, setActiveExperienceIndex] = useState(0);
 
+  const { controls, ref } = useAnimateOnScroll();
+
   const { companyName, jobDescription, periodWorked, jobTitle } =
     experienceJob[activeExperienceIndex];
 
   return (
-    <Container id="experience">
+    <Container
+      id="experience"
+      variants={animateOnScrollVariant}
+      animate={controls}
+      initial="hidden"
+      ref={ref}
+    >
       <SectionTitle>
         <SectionTitle.HighlightTitleNumber>
           02.

@@ -1,13 +1,15 @@
+import { motion } from "framer-motion";
 import {
   AiFillGithub as GithubIcon,
   AiFillLinkedin as LinkedinIcon,
 } from "react-icons/ai";
 
+import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
 import { styled, theme } from "~/styles";
 import type { Portfolio } from "~/types";
 import { Cta } from "./cta";
 
-const Container = styled("section", {
+const Container = styled(motion.section, {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -117,8 +119,18 @@ export const Hero = ({
     heroSubtitle,
   },
 }: HeroProps) => {
+  const { controls, ref } = useAnimateOnScroll();
+
   return (
-    <Container>
+    <Container
+      variants={animateOnScrollVariant}
+      animate={controls}
+      initial="hidden"
+      custom={{
+        delay: 0.5,
+      }}
+      ref={ref}
+    >
       <InfoContainer>
         <Title>
           {heroTitle}

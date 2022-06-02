@@ -1,4 +1,7 @@
+import { motion } from "framer-motion";
 import { useState } from "react";
+
+import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { HighlightInfo } from "./highlight-info";
@@ -6,7 +9,7 @@ import { FolderIcon, GithubIcon, LinkIcon } from "./icons";
 import { SectionTitle } from "./section-title";
 import { Heading3, Paragraph } from "./typography";
 
-const Container = styled("section", {
+const Container = styled(motion.section, {
   mb: "$24",
   display: "flex",
   flexDirection: "column",
@@ -91,6 +94,8 @@ export const Projects = ({
   const [itemsToShow, setItemsToShow] = useState(6);
   const [expanded, setExpanded] = useState(false);
 
+  const { controls, ref } = useAnimateOnScroll();
+
   const handleShowMore = () => {
     setItemsToShow(projects.length);
     setExpanded(true);
@@ -102,7 +107,13 @@ export const Projects = ({
   };
 
   return (
-    <Container id="projects">
+    <Container
+      id="projects"
+      variants={animateOnScrollVariant}
+      animate={controls}
+      initial="hidden"
+      ref={ref}
+    >
       <SectionTitle>
         <SectionTitle.HighlightTitleNumber>
           03.
