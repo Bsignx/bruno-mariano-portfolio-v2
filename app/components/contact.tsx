@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { Cta } from "./cta";
@@ -28,7 +28,7 @@ export const Contact = ({
   return (
     <Container
       id="contact"
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       ref={ref}

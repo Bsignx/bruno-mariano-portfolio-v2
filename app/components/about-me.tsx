@@ -5,7 +5,7 @@ import { styled } from "~/styles";
 import { SectionTitle } from "./section-title";
 import { Paragraph } from "./typography";
 import { HighlightInfo } from "./highlight-info";
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 
 const Container = styled(motion.section, {
   maxWidth: "40.625rem",
@@ -32,7 +32,7 @@ export const AboutMe = ({
   return (
     <Container
       id="about-me"
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       custom={{

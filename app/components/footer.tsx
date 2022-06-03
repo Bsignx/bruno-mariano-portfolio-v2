@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+
+import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 import type { Portfolio } from "~/types";
 import { Paragraph } from "./typography";
 
@@ -13,7 +14,7 @@ export const Footer = ({ portfolio: { footerTitle } }: FooterProps) => {
   return (
     <Paragraph
       as={motion.p}
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       ref={ref}

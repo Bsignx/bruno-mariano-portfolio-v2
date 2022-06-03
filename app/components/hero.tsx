@@ -4,7 +4,7 @@ import {
   AiFillLinkedin as LinkedinIcon,
 } from "react-icons/ai";
 
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 import { styled, theme } from "~/styles";
 import type { Portfolio } from "~/types";
 import { Cta } from "./cta";
@@ -123,7 +123,7 @@ export const Hero = ({
 
   return (
     <Container
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       custom={{

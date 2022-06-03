@@ -1,7 +1,11 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import {
+  animateOnScrollVariants,
+  animateOpacityVariants,
+  useAnimateOnScroll,
+} from "~/helpers";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { HighlightInfo } from "./highlight-info";
@@ -28,7 +32,7 @@ const ProjectsContainer = styled("div", {
   mb: "$8",
 });
 
-const ProjectContainer = styled("article", {
+const ProjectContainer = styled(motion.article, {
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between",
@@ -109,7 +113,7 @@ export const Projects = ({
   return (
     <Container
       id="projects"
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       ref={ref}
@@ -121,68 +125,76 @@ export const Projects = ({
         {projectsTitle}
       </SectionTitle>
       <ProjectsContainer>
-        {projects
-          .slice(0, itemsToShow)
-          .map(
-            ({
-              id,
-              description,
-              repositoryUrl,
-              websiteUrl,
-              title,
-              techUsedName,
-            }) => (
-              <ProjectContainer key={id}>
-                <div>
-                  <IconsContainer>
-                    <FolderIcon aria-label="folder" />
-                    <ExternarLinksContainer>
-                      {repositoryUrl && (
-                        <a
-                          href={repositoryUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <GithubIcon aria-label="github link" />
-                        </a>
-                      )}
+        <AnimatePresence>
+          {projects
+            .slice(0, itemsToShow)
+            .map(
+              ({
+                id,
+                description,
+                repositoryUrl,
+                websiteUrl,
+                title,
+                techUsedName,
+              }) => (
+                <ProjectContainer
+                  key={id + title}
+                  variants={animateOpacityVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                >
+                  <div>
+                    <IconsContainer>
+                      <FolderIcon aria-label="folder" />
+                      <ExternarLinksContainer>
+                        {repositoryUrl && (
+                          <a
+                            href={repositoryUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <GithubIcon aria-label="github link" />
+                          </a>
+                        )}
 
-                      {websiteUrl && (
-                        <a
-                          href={websiteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <LinkIcon aria-label="website link" />
-                        </a>
-                      )}
-                    </ExternarLinksContainer>
-                  </IconsContainer>
-                  <Heading3
-                    css={{
-                      my: "$4",
-                    }}
-                  >
-                    {title}
-                  </Heading3>
-                  <Paragraph>{description}</Paragraph>
-                </div>
-                <TechsContainer>
-                  {techUsedName.map((tech) => (
-                    <HighlightInfo
+                        {websiteUrl && (
+                          <a
+                            href={websiteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <LinkIcon aria-label="website link" />
+                          </a>
+                        )}
+                      </ExternarLinksContainer>
+                    </IconsContainer>
+                    <Heading3
                       css={{
-                        pd: "$2 $4",
-                        fontSize: "$2",
+                        my: "$4",
                       }}
-                      key={tech}
                     >
-                      {tech}
-                    </HighlightInfo>
-                  ))}
-                </TechsContainer>
-              </ProjectContainer>
-            )
-          )}
+                      {title}
+                    </Heading3>
+                    <Paragraph>{description}</Paragraph>
+                  </div>
+                  <TechsContainer>
+                    {techUsedName.map((tech) => (
+                      <HighlightInfo
+                        css={{
+                          pd: "$2 $4",
+                          fontSize: "$2",
+                        }}
+                        key={tech}
+                      >
+                        {tech}
+                      </HighlightInfo>
+                    ))}
+                  </TechsContainer>
+                </ProjectContainer>
+              )
+            )}
+        </AnimatePresence>
       </ProjectsContainer>
 
       <ShowMoreButton onClick={expanded ? handleShowLess : handleShowMore}>

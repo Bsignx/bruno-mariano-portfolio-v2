@@ -10,7 +10,7 @@ import {
   Menu,
   Projects,
 } from "~/components";
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 import { styled, traverseUpLeft, traverseUpRight } from "~/styles";
 import type { Portfolio } from "~/types";
 
@@ -81,7 +81,7 @@ export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
   return (
     <Container>
       <CirclesContainer
-        variants={animateOnScrollVariant}
+        variants={animateOnScrollVariants}
         animate={controls}
         initial="hidden"
         ref={ref}

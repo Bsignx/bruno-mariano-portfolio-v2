@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
-import { ClientOnly } from "remix-utils";
 import { scroller } from "react-scroll";
 import {
   HiMenuAlt2 as OpenMenuIcon,
@@ -240,35 +238,25 @@ export const Menu = () => {
           }}
         />
       </WrapperWithToggleTheme>
-      <ClientOnly fallback="Loading...">
-        {() =>
-          createPortal(
-            <MobileMenuNav
-              aria-hidden={!isOpen}
-              visible={isOpen}
-              hide={!isOpen}
-            >
-              <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
-                <CloseMenuICon aria-label="close menu" />
-              </CloseMenuIconWrapper>
-              {MENU_ITEMS.map(({ name, path }) => (
-                <MenuLink
-                  key={name}
-                  onClick={() => scrollTo(path)}
-                  mobile
-                  css={{
-                    transform: isOpen ? "translateY(0)" : "translateY(3rem)",
-                    transition: "transform 0.3s ease-in-out",
-                  }}
-                >
-                  {name}
-                </MenuLink>
-              ))}
-            </MobileMenuNav>,
-            document.getElementById("menu-mobile") as HTMLElement
-          )
-        }
-      </ClientOnly>
+
+      <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
+        <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
+          <CloseMenuICon aria-label="close menu" />
+        </CloseMenuIconWrapper>
+        {MENU_ITEMS.map(({ name, path }) => (
+          <MenuLink
+            key={name}
+            onClick={() => scrollTo(path)}
+            mobile
+            css={{
+              transform: isOpen ? "translateY(0)" : "translateY(3rem)",
+              transition: "transform 0.3s ease-in-out",
+            }}
+          >
+            {name}
+          </MenuLink>
+        ))}
+      </MobileMenuNav>
     </Container>
   );
 };

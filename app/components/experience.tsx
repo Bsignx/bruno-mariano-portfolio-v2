@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-import { animateOnScrollVariant, useAnimateOnScroll } from "~/helpers";
+import {
+  animateOnScrollVariants,
+  animateOpacityVariants,
+  useAnimateOnScroll,
+} from "~/helpers";
 import { styled } from "~/styles";
 import type { Portfolio } from "~/types";
 import { SectionTitle } from "./section-title";
@@ -28,7 +32,7 @@ const ExperiencesContainer = styled("div", {
   },
 });
 
-const ExperienceContainer = styled("article", {});
+const ExperienceContainer = styled(motion.article, {});
 
 const ButtonsContainer = styled("div", {
   display: "flex",
@@ -128,13 +132,10 @@ export const Experience = ({
 
   const { controls, ref } = useAnimateOnScroll();
 
-  const { companyName, jobDescription, periodWorked, jobTitle } =
-    experienceJob[activeExperienceIndex];
-
   return (
     <Container
       id="experience"
-      variants={animateOnScrollVariant}
+      variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"
       ref={ref}
@@ -145,6 +146,7 @@ export const Experience = ({
         </SectionTitle.HighlightTitleNumber>{" "}
         {experienceTitle}
       </SectionTitle>
+
       <ExperiencesContainer>
         <ButtonsContainer>
           {experienceJob.map(({ id, companyName }, index) => (
@@ -158,32 +160,44 @@ export const Experience = ({
             </JobButton>
           ))}
         </ButtonsContainer>
-        <ExperienceContainer>
-          <Heading3>
-            {jobTitle} - <HighlightText>{companyName}</HighlightText>
-          </Heading3>
-
-          <PeriodWorked>{periodWorked}</PeriodWorked>
-
-          {jobDescription.map((description, index) => (
-            <JobDescriptionCotainer key={`${companyName}-${jobTitle}-${index}`}>
-              <HighlightText
-                css={{
-                  fontWeight: "$bold",
-                }}
+        {experienceJob.map(
+          ({ jobTitle, companyName, jobDescription, periodWorked }, index) =>
+            index === activeExperienceIndex && (
+              <ExperienceContainer
+                key={jobTitle + companyName}
+                variants={animateOpacityVariants}
+                initial="hidden"
+                animate="visible"
               >
-                {">>"}
-              </HighlightText>
-              <Paragraph
-                css={{
-                  marginLeft: "$2",
-                }}
-              >
-                {description}
-              </Paragraph>
-            </JobDescriptionCotainer>
-          ))}
-        </ExperienceContainer>
+                <Heading3>
+                  {jobTitle} - <HighlightText>{companyName}</HighlightText>
+                </Heading3>
+
+                <PeriodWorked>{periodWorked}</PeriodWorked>
+
+                {jobDescription.map((description, index) => (
+                  <JobDescriptionCotainer
+                    key={`${companyName}-${jobTitle}-${index}`}
+                  >
+                    <HighlightText
+                      css={{
+                        fontWeight: "$bold",
+                      }}
+                    >
+                      {">>"}
+                    </HighlightText>
+                    <Paragraph
+                      css={{
+                        marginLeft: "$2",
+                      }}
+                    >
+                      {description}
+                    </Paragraph>
+                  </JobDescriptionCotainer>
+                ))}
+              </ExperienceContainer>
+            )
+        )}
       </ExperiencesContainer>
     </Container>
   );
