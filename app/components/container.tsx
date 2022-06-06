@@ -1,6 +1,6 @@
 import { styled } from "~/styles";
 
-export const Container = styled("div", {
+export const Container = styled("main", {
   maxWidth: "75rem",
   margin: "0 auto",
   display: "flex",

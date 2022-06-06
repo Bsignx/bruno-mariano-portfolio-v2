@@ -13,7 +13,8 @@ const Container = styled(motion.section, {
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  marginTop: "$24",
+  marginTop: "$20",
+  zIndex: 1,
 
   "@tabletUp": {
     flexDirection: "row",
