@@ -9,11 +9,18 @@ import { styled, theme as styleTheme } from "~/styles";
 import { ButtonToggleTheme } from "./button-toggle-theme";
 
 const Container = styled("div", {
-  width: "100%",
+  maxWidth: "75rem",
+  margin: "0 auto",
   display: "flex",
-  pd: "$4 0 0 0",
+  pd: "$2 2rem",
   ai: "flex-end",
   justifyContent: "space-between",
+});
+
+const Wrapper = styled("div", {
+  background: "$blurBackground2",
+  position: "sticky",
+  top: 0,
 });
 
 const OpenMenuIconWrapper = styled("div", {
@@ -189,74 +196,77 @@ export const Menu = () => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "visible";
     }
   }, [isOpen]);
 
   return (
-    <Container
+    <Wrapper
       as="header"
       css={{
         zIndex: isOpen
           ? styleTheme.zIndices.overlay
           : `calc(${styleTheme.zIndices.overlay} - 1)`,
+        backdropFilter: !isOpen ? "blur(0.5rem)" : "initial",
       }}
     >
-      <OpenMenuIconWrapper
-        onClick={() => setIsOpen(true)}
-        hide={{
-          "@initial": false,
-          "@tabletUp": true,
-        }}
-      >
-        <OpenMenuIcon aria-label="open menu" />
-      </OpenMenuIconWrapper>
-
-      <Logo>
-        bm<span>.</span>
-      </Logo>
-
-      <WrapperWithToggleTheme>
-        <MenuNav
-          css={{
-            "@tabletUp": {
-              display: "block",
-            },
+      <Container>
+        <OpenMenuIconWrapper
+          onClick={() => setIsOpen(true)}
+          hide={{
+            "@initial": false,
+            "@tabletUp": true,
           }}
         >
+          <OpenMenuIcon aria-label="open menu" />
+        </OpenMenuIconWrapper>
+
+        <Logo>
+          bm<span>.</span>
+        </Logo>
+
+        <WrapperWithToggleTheme>
+          <MenuNav
+            css={{
+              "@tabletUp": {
+                display: "block",
+              },
+            }}
+          >
+            {MENU_ITEMS.map(({ name, path }) => (
+              <MenuLink key={name} onClick={() => scrollTo(path)}>
+                {name}
+              </MenuLink>
+            ))}
+          </MenuNav>{" "}
+          <ButtonToggleTheme
+            css={{
+              "@tabletUp": {
+                marginLeft: "$4",
+              },
+            }}
+          />
+        </WrapperWithToggleTheme>
+
+        <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
+          <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
+            <CloseMenuICon aria-label="close menu" />
+          </CloseMenuIconWrapper>
           {MENU_ITEMS.map(({ name, path }) => (
-            <MenuLink key={name} onClick={() => scrollTo(path)}>
+            <MenuLink
+              key={name}
+              onClick={() => scrollTo(path)}
+              mobile
+              css={{
+                transform: isOpen ? "translateY(0)" : "translateY(3rem)",
+                transition: "transform 0.3s ease-in-out",
+              }}
+            >
               {name}
             </MenuLink>
           ))}
-        </MenuNav>{" "}
-        <ButtonToggleTheme
-          css={{
-            "@tabletUp": {
-              marginLeft: "$4",
-            },
-          }}
-        />
-      </WrapperWithToggleTheme>
-
-      <MobileMenuNav aria-hidden={!isOpen} visible={isOpen} hide={!isOpen}>
-        <CloseMenuIconWrapper onClick={() => setIsOpen(false)}>
-          <CloseMenuICon aria-label="close menu" />
-        </CloseMenuIconWrapper>
-        {MENU_ITEMS.map(({ name, path }) => (
-          <MenuLink
-            key={name}
-            onClick={() => scrollTo(path)}
-            mobile
-            css={{
-              transform: isOpen ? "translateY(0)" : "translateY(3rem)",
-              transition: "transform 0.3s ease-in-out",
-            }}
-          >
-            {name}
-          </MenuLink>
-        ))}
-      </MobileMenuNav>
-    </Container>
+        </MobileMenuNav>
+      </Container>
+    </Wrapper>
   );
 };

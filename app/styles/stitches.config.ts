@@ -6,8 +6,10 @@ export type { VariantProps } from "@stitches/react";
 const colorsTokens = {
   black: "#0F1413",
   black2: "#1D2428",
+  blackWithOpacity: "rgba(15, 20, 19, 0.9)",
   white: "#F0F3FB",
   white2: "#EDF0FA",
+  whiteWithOpacity: "rgba(240, 243, 251, 0.9)",
   grayDark: "#DBD3D3",
   grayLight: "#3E4644",
   linear: "linear-gradient(120deg, #FC466B 2.39%, #3F5EFB 87.83%)",
@@ -22,6 +24,7 @@ const colorsTokensLightTheme = {
   background: "$white",
   background2: "$white2",
   blurBackground: "$blurLight",
+  blurBackground2: "$whiteWithOpacity",
 };
 
 const colorsTokensDarkTheme = {
@@ -31,6 +34,7 @@ const colorsTokensDarkTheme = {
   background: "$black",
   background2: "$black2",
   blurBackground: "$blurDark",
+  blurBackground2: "$blackWithOpacity",
 };
 
 const spaceTokens = {

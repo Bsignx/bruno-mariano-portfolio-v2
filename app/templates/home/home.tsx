@@ -59,16 +59,12 @@ const CircleContainer = styled("div", {
   position: "absolute",
   top: 0,
   overflow: "visible",
-  opacity: 0.3,
+  opacity: 0.5,
   left: 0,
 
   "@tabletUp": {
     left: "6rem",
   },
-});
-
-const MainContainer = styled("main", {
-  zIndex: 1,
 });
 
 type HomeTemplateProps = {
@@ -79,39 +75,39 @@ export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
   const { controls, ref } = useAnimateOnScroll();
 
   return (
-    <Container>
-      <CirclesContainer
-        variants={animateOnScrollVariants}
-        animate={controls}
-        initial="hidden"
-        ref={ref}
-      >
-        <CircleContainer>
-          <FirstCircle />
-        </CircleContainer>
-
-        <CircleContainer
-          css={{
-            top: "7rem",
-            left: "6rem",
-            "@tabletUp": {
-              left: "16rem",
-            },
-          }}
-        >
-          <SecondCircle />
-        </CircleContainer>
-      </CirclesContainer>
-
+    <>
       <Menu />
-      <MainContainer>
+      <Container>
+        <CirclesContainer
+          variants={animateOnScrollVariants}
+          animate={controls}
+          initial="hidden"
+          ref={ref}
+        >
+          <CircleContainer>
+            <FirstCircle />
+          </CircleContainer>
+
+          <CircleContainer
+            css={{
+              top: "7rem",
+              left: "2rem",
+              "@tabletUp": {
+                left: "12rem",
+              },
+            }}
+          >
+            <SecondCircle />
+          </CircleContainer>
+        </CirclesContainer>
+
         <Hero portfolio={portfolio} />
         <AboutMe portfolio={portfolio} />
         <Experience portfolio={portfolio} />
         <Projects portfolio={portfolio} />
         <Contact portfolio={portfolio} />
         <Footer portfolio={portfolio} />
-      </MainContainer>
-    </Container>
+      </Container>
+    </>
   );
 };
