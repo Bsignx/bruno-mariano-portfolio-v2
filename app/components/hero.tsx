@@ -124,6 +124,7 @@ export const Hero = ({
 
   return (
     <Container
+      id="hero"
       variants={animateOnScrollVariants}
       animate={controls}
       initial="hidden"

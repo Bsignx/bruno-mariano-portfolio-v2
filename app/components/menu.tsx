@@ -160,6 +160,11 @@ const WrapperWithToggleTheme = styled("div", {
   alignItems: "center",
 });
 
+const LogoLink = styled("a", {
+  textDecoration: "none",
+  cursor: "pointer",
+});
+
 const MENU_ITEMS = [
   {
     name: "About-me",
@@ -182,11 +187,12 @@ const MENU_ITEMS = [
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollTo = (element: string) => {
+  const scrollTo = (element: string, offset = -100) => {
     scroller.scrollTo(element, {
       duration: 600,
       delay: 0,
       smooth: "easeInOutQuart",
+      offset,
     });
 
     isOpen && setIsOpen(false);
@@ -221,9 +227,11 @@ export const Menu = () => {
           <OpenMenuIcon aria-label="open menu" />
         </OpenMenuIconWrapper>
 
-        <Logo>
-          bm<span>.</span>
-        </Logo>
+        <LogoLink onClick={() => scrollTo("hero", -154)}>
+          <Logo>
+            bm<span>.</span>
+          </Logo>
+        </LogoLink>
 
         <WrapperWithToggleTheme>
           <MenuNav
