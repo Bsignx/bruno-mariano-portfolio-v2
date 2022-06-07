@@ -14,13 +14,14 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
+  useLocation,
 } from "@remix-run/react";
 import { useContext, useEffect } from "react";
 
 import type { THEME } from "./helpers";
 import { getThemeSession } from "./helpers";
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from "./helpers";
-import { getEnv } from "./utils";
+import { getEnv, gtag } from "./utils";
 import { darkTheme, lightTheme, ClientStyleContext } from "./styles";
 
 export const headers: HeadersFunction = () => ({
@@ -110,8 +111,15 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 const Document = ({ children, title }: DocumentProps) => {
-  const data = useLoaderData<LoaderData>();
+  const { theme, ENV } = useLoaderData<LoaderData>();
+  const location = useLocation();
   const clientStyleData = useContext(ClientStyleContext);
+
+  useEffect(() => {
+    if (ENV.GA_TRACKING_ID?.length) {
+      gtag.pageview(location.pathname, ENV.GA_TRACKING_ID);
+    }
+  }, [ENV.GA_TRACKING_ID, location.pathname]);
 
   // Only executed on client
   useEffect(() => {
@@ -125,7 +133,7 @@ const Document = ({ children, title }: DocumentProps) => {
         {title ? <title>{title}</title> : null}
         <Meta />
         <Links />
-        <PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
+        <PreventFlashOnWrongTheme ssrTheme={Boolean(theme)} />
         <style
           id="stitches"
           dangerouslySetInnerHTML={{ __html: clientStyleData.sheet }}
@@ -134,11 +142,35 @@ const Document = ({ children, title }: DocumentProps) => {
       </head>
 
       <DocumentBody>
+        {process.env.NODE_ENV === "development" ||
+        !ENV.GA_TRACKING_ID ? null : (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${ENV.GA_TRACKING_ID}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${ENV.GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+              }}
+            />
+          </>
+        )}
+
         {children}
         <div id="menu-mobile" />
         <script
           dangerouslySetInnerHTML={{
-            __html: `window.ENV = ${JSON.stringify(data.ENV)};`,
+            __html: `window.ENV = ${JSON.stringify(ENV)};`,
           }}
         />
       </DocumentBody>
@@ -160,10 +192,10 @@ export function DocumentBody({ children }: { children: React.ReactNode }) {
 }
 
 export default function AppWithProviders() {
-  const data = useLoaderData<LoaderData>();
+  const { theme } = useLoaderData<LoaderData>();
 
   return (
-    <ThemeProvider specifiedTheme={data.theme}>
+    <ThemeProvider specifiedTheme={theme}>
       <App />
     </ThemeProvider>
   );
