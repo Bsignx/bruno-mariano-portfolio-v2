@@ -29,6 +29,36 @@ export const headers: HeadersFunction = () => ({
 
 export const links: LinksFunction = () => [
   {
+    rel: "shortcut icon",
+    href: "/icons/favicon.ico?v=1",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "32x32",
+    href: "/icons/favicon-32x32.png?v=1",
+  },
+  {
+    rel: "icon",
+    type: "image/png",
+    sizes: "16x16",
+    href: "/icons/favicon-16x16.png?v=1",
+  },
+  {
+    rel: "apple-touch-icon",
+    sizes: "180x180",
+    href: "/icons/apple-touch-icon.png?v=1",
+  },
+  {
+    rel: "mask-icon",
+    href: "/icons/safari-pinned-tab.svg?v=1",
+    color: "#0E1415",
+  },
+  {
+    rel: "manifest",
+    href: "/site.webmanifest?v=1",
+  },
+  {
     href: "https://fonts.gstatic.com",
     rel: "preconnect",
   },
@@ -44,8 +74,19 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "Remix with Stitches",
   viewport: "width=device-width,initial-scale=1",
+  name: "Bruno Mariano",
+  title: "Bruno Mariano - Front-end developer",
+  description:
+    "Personal website of Bruno Mariano. Front-end developer with a passion for web development.",
+  url: "https://brunomariano.me",
+  route: "",
+  color: "#0F1413",
+  ogImageAlt: "Website of Bruno Mariano",
+  ogImageUrl: "images/coverage.jpg?v=3",
+  twiterImageUrl: "images/coverage.jpg?v=3",
+  fbAppId: "221593320168073",
+  locale: "pt_BR",
 });
 
 export type LoaderData = {
