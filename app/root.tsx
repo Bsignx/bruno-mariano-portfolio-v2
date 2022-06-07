@@ -73,23 +73,67 @@ export const links: LinksFunction = () => [
   },
 ];
 
+// <!-- Primary Meta Tags -->
+// <title>Bruno Mariano - Front-end developer</title>
+// <meta name="title" content="Bruno Mariano - Front-end developer">
+// <meta name="description" content="Personal website of Bruno Mariano. Front-end developer with a passion for web development.">
+
+// <!-- Open Graph / Facebook -->
+// <meta property="og:type" content="website">
+// <meta property="og:url" content="https://metatags.io/">
+// <meta property="og:title" content="Bruno Mariano - Front-end developer">
+// <meta property="og:description" content="Personal website of Bruno Mariano. Front-end developer with a passion for web development.">
+// <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
+
+// <!-- Twitter -->
+// <meta property="twitter:card" content="summary_large_image">
+// <meta property="twitter:url" content="https://metatags.io/">
+// <meta property="twitter:title" content="Bruno Mariano - Front-end developer">
+// <meta property="twitter:description" content="Personal website of Bruno Mariano. Front-end developer with a passion for web development.">
+// <meta property="twitter:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png"></meta>
+const themeColor = "#0F1413";
+
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   viewport: "width=device-width,initial-scale=1",
-  name: "Bruno Mariano",
+
   title: "Bruno Mariano - Front-end developer",
   description:
     "Personal website of Bruno Mariano. Front-end developer with a passion for web development.",
-  url: "https://brunomariano.me",
-  route: "",
-  color: "#0F1413",
-  ogImageAlt: "Website of Bruno Mariano",
-  ogImageUrl:
+
+  "application-name": "Bruno Mariano - Front-end developer",
+  "apple-mobile-web-app-title": "Bruno Mariano - Front-end developer",
+  "theme-color": themeColor,
+  "msapplication-TileColor": themeColor,
+  "msapplication-config": "https://brunomariano.com/browserconfig.xml?v=1",
+
+  "og:site_name": "Bruno Mariano - Front-end developer",
+  "og:title": "Bruno Mariano - Front-end developer",
+  "og:description":
+    "Personal website of Bruno Mariano. Front-end developer with a passion for web development.",
+  "og:locale": "pt_BR",
+  "og:url": "https://brunomariano.me",
+  "og:image":
     "https://res.cloudinary.com/my-portfoiio/image/upload/v1654625685/my-portfolio/coverage_qfcpzk.jpg",
-  twiterImageUrl:
+  "og:image:type": "image/jpeg",
+  "og:image:alt": "Bruno Mariano - Front-end developer",
+
+  "og:type": "profile",
+  "profile:first_name": "Bruno",
+  "profile:last_name": "Mariano",
+  "profile:gender": "male",
+  "profile:username": "brunomariano",
+
+  "twitter:card": "summary_large_image",
+  "twitter:site": "@bsignx",
+  "twitter:creator": "@bsignx",
+  "twitter:title": "Bruno Mariano - Front-end developer",
+  "twitter:description":
+    "Personal website of Bruno Mariano. Front-end developer with a passion for web development.",
+  "twitter:image":
     "https://res.cloudinary.com/my-portfoiio/image/upload/v1654625685/my-portfolio/coverage_qfcpzk.jpg",
-  fbAppId: "221593320168073",
-  locale: "pt_BR",
+
+  "fb:app_id": "",
 });
 
 export type LoaderData = {
