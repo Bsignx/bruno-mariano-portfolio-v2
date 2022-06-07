@@ -1,12 +1,11 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 
-import { getEnvServer } from "~/utils/env.server";
 import { THEME, isTheme } from "~/helpers/theme";
 
 const themeStorage = createCookieSessionStorage({
   cookie: {
     name: "app-theme",
-    secrets: [getEnvServer("SESSION_SECRET")],
+    secrets: [],
     sameSite: "lax",
     path: "/",
     expires: new Date("2100-12-12"),
