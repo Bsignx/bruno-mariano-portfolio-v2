@@ -84,8 +84,10 @@ export const meta: MetaFunction = () => ({
   route: "",
   color: "#0F1413",
   ogImageAlt: "Website of Bruno Mariano",
-  ogImageUrl: "images/coverage.jpg?v=3",
-  twiterImageUrl: "images/coverage.jpg?v=3",
+  ogImageUrl:
+    "https://res.cloudinary.com/my-portfoiio/image/upload/v1654625685/my-portfolio/coverage_qfcpzk.jpg",
+  twiterImageUrl:
+    "https://res.cloudinary.com/my-portfoiio/image/upload/v1654625685/my-portfolio/coverage_qfcpzk.jpg",
   fbAppId: "221593320168073",
   locale: "pt_BR",
 });
