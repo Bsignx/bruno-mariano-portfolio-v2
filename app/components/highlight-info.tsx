@@ -6,10 +6,11 @@ export const HighlightInfo = styled("div", {
   fontSize: "$2",
   border: "none",
   position: "relative",
-  pd: "$2 $6",
+  pd: "$2 $4",
   display: "inline-block",
   mb: "$3",
   mr: "$3",
+  textTransform: "uppercase",
 
   "&::before": {
     content: "",

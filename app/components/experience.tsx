@@ -58,6 +58,7 @@ const JobButton = styled("button", {
   cursor: "pointer",
   pd: "0 $3",
   position: "relative",
+  whiteSpace: "nowrap",
 
   "&:hover": {
     filter: "opacity(0.8)",
@@ -179,16 +180,10 @@ export const Experience = ({
                   <JobDescriptionCotainer
                     key={`${companyName}-${jobTitle}-${index}`}
                   >
-                    <HighlightText
-                      css={{
-                        fontWeight: "$bold",
-                      }}
-                    >
-                      {">>"}
-                    </HighlightText>
                     <Paragraph
                       css={{
-                        marginLeft: "$2",
+                        textAlign: "justify",
+                        textJustify: "inter-word",
                       }}
                     >
                       {description}
