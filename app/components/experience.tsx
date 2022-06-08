@@ -12,7 +12,7 @@ import { SectionTitle } from "./section-title";
 import { Heading3, Paragraph } from "./typography";
 
 const Container = styled(motion.section, {
-  maxWidth: "37.5rem",
+  maxWidth: "500px",
   margin: "0 auto $24",
 
   "@tabletUp": {
@@ -180,7 +180,14 @@ export const Experience = ({
                   <JobDescriptionCotainer
                     key={`${companyName}-${jobTitle}-${index}`}
                   >
-                    <Paragraph>{description}</Paragraph>
+                    <Paragraph
+                      css={{
+                        textJustify: "inter-word",
+                        textAlign: "justify",
+                      }}
+                    >
+                      {description}
+                    </Paragraph>
                   </JobDescriptionCotainer>
                 ))}
               </ExperienceContainer>

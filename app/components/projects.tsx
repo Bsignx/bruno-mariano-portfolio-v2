@@ -176,7 +176,14 @@ export const Projects = ({
                     >
                       {title}
                     </Heading3>
-                    <Paragraph>{description}</Paragraph>
+                    <Paragraph
+                      css={{
+                        textJustify: "inter-word",
+                        textAlign: "justify",
+                      }}
+                    >
+                      {description}
+                    </Paragraph>
                   </div>
                   <TechsContainer>
                     {techUsedName.map((tech) => (
