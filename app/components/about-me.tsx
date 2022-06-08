@@ -10,6 +10,7 @@ import { animateOnScrollVariants, useAnimateOnScroll } from "~/helpers";
 const Container = styled(motion.section, {
   maxWidth: "40.625rem",
   margin: "$24 auto",
+  zIndex: "1",
 
   "@tabletUp": {
     margin: "$40 auto",
