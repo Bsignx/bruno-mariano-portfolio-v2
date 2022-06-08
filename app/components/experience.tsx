@@ -180,14 +180,7 @@ export const Experience = ({
                   <JobDescriptionCotainer
                     key={`${companyName}-${jobTitle}-${index}`}
                   >
-                    <Paragraph
-                      css={{
-                        textAlign: "justify",
-                        textJustify: "inter-word",
-                      }}
-                    >
-                      {description}
-                    </Paragraph>
+                    <Paragraph>{description}</Paragraph>
                   </JobDescriptionCotainer>
                 ))}
               </ExperienceContainer>
