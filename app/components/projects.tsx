@@ -204,9 +204,11 @@ export const Projects = ({
         </AnimatePresence>
       </ProjectsContainer>
 
-      <ShowMoreButton onClick={expanded ? handleShowLess : handleShowMore}>
-        {expanded ? "Show less" : "Show more"}
-      </ShowMoreButton>
+      {projects.length > 6 && (
+        <ShowMoreButton onClick={expanded ? handleShowLess : handleShowMore}>
+          {expanded ? "Show less" : `${projectsButtonName}`}
+        </ShowMoreButton>
+      )}
     </Container>
   );
 };
