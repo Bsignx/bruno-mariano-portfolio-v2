@@ -2,7 +2,7 @@
   brunomariano.me - v2
 </h1>
 <p align="center">
-  The second iteration of <a href="brunomariano.me" target="_blank">brunomariano.me</a> built with <a href="https://remix.run/" target="_blank">Remix JS</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
+  The second iteration of <a href="brunomariano.me" target="_blank">brunomariano.me</a> built with <a href="https://remix.run/" target="_blank">Next JS</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 <p align="center">
   Previous iterations:
@@ -36,7 +36,7 @@
 1. Generate a full static production build
 
    ```sh
-   yarn run
+   yarn build
    ```
 
 2. Preview the site as it will appear once deployed
