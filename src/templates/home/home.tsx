@@ -55,13 +55,18 @@ const CirclesContainer = styled(motion.div, {
   top: '8rem',
   right: 0,
   left: 0,
+  display: 'block',
+
+  '@tabletUp': {
+    display: 'none',
+  },
 });
 
 const CircleContainer = styled('div', {
   position: 'absolute',
   top: 0,
   overflow: 'visible',
-  opacity: 0.5,
+  opacity: 0.4,
   left: 0,
 
   '@tabletUp': {

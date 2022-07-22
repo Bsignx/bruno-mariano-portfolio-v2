@@ -3,7 +3,7 @@ import { gql } from 'graphql-request';
 
 import { graphcmsClient } from '../helpers';
 import { Portfolio } from '../types';
-import { HomeTemplate } from '../templates';
+import { HomeTemplate } from '../templates/home';
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await graphcmsClient.request<{
