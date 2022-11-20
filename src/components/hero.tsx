@@ -144,7 +144,7 @@ export const Hero = ({
         <Description>{heroDescription}</Description>
         <CallToActionContainer>
           <Cta
-            href={heroResumeAttachment.url}
+            href={heroResumeAttachment?.url}
             target="_blank"
             rel="noopener noreferrer"
             title={heroButtonName}
@@ -189,7 +189,7 @@ export const Hero = ({
         <Suspense fallback={null}>
           <AnimatedAvatar position={[0.025, -0.9, 0]} />
         </Suspense>
-        <OrbitControls />
+        <OrbitControls enableZoom={false} />
       </ThreeCanvas>
     </Container>
   );
