@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+
 import { AboutMe } from '../../components/about-me';
 import { Contact } from '../../components/contact';
 import { Container } from '../../components/container';
@@ -7,7 +8,6 @@ import { Footer } from '../../components/footer';
 import { Hero } from '../../components/hero';
 import { Menu } from '../../components/menu';
 import { Projects } from '../../components/projects';
-
 import { animateOnScrollVariants, useAnimateOnScroll } from '../../helpers';
 import {
   styled,
@@ -109,6 +109,7 @@ export const HomeTemplate = ({ portfolio }: HomeTemplateProps) => {
         </CirclesContainer>
 
         <Hero portfolio={portfolio} />
+
         <AboutMe portfolio={portfolio} />
         <Experience portfolio={portfolio} />
         <Projects portfolio={portfolio} />
