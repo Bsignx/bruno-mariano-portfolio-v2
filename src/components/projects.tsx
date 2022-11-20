@@ -18,6 +18,7 @@ const Container = styled(motion.section, {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  width: '100%',
 
   '@tabletUp': {
     mb: '$40',
@@ -30,6 +31,7 @@ const ProjectsContainer = styled('div', {
   gridTemplateColumns: 'repeat(auto-fill, minmax(20rem, 1fr))',
   gridGap: '$6',
   mb: '$8',
+  width: '100%',
 });
 
 const ProjectContainer = styled(motion.article, {
@@ -40,11 +42,7 @@ const ProjectContainer = styled(motion.article, {
   boxShadow: '0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)',
   pd: '$6',
   borderRadius: '0.5rem',
-  height: '18.75rem',
-
-  '@tabletUp': {
-    height: '16.75rem',
-  },
+  height: '310px',
 });
 
 const IconsContainer = styled('div', {
